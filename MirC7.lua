@@ -1,0 +1,45 @@
+-- miracles clean part 7/8
+    _G.MiraclesESP_Name = v
+    if v then refreshAllESP() logConsole:Append("[miracles] free name esp on") else for _, p in ipairs(Players:GetPlayers()) do pcall(clearMiraclesESP, p) if _G.MiraclesESP_Box then pcall(applyMiraclesESP, p) end end logConsole:Append("[miracles] free name esp off") end
+end })
+local tracerToggle = espTab:CreateToggle({ name = "tracers [pro]", description = "requires verification", value = false, callback = function(v) if v then revert(tracerToggle) locked("tracers pro") end end })
+local healthToggle = espTab:CreateToggle({ name = "health bar [pro]", description = "requires verification", value = false, callback = function(v) if v then revert(healthToggle) locked("health bar pro") end end })
+espTab:CreateDropdown({ name = "esp color [pro]", options = { "red", "green", "blue", "rainbow" }, value = "red", callback = function(sel) locked("esp color pro: " .. tostring(sel)) end })
+
+local gunTab = window:CreateTab({ name = "gun mods", icon = 93364949241311 })
+gunTab:CreateText({ name = "gun mods", text = "no recoil / no spread presets for blox strike & counter blox. requires verification." })
+local recoilToggle = gunTab:CreateToggle({ name = "no recoil", value = false, callback = function(v) if v then revert(recoilToggle) locked("no recoil") end end })
+local spreadToggle = gunTab:CreateToggle({ name = "no spread", value = false, callback = function(v) if v then revert(spreadToggle) locked("no spread") end end })
+local fireToggle = gunTab:CreateToggle({ name = "rapid fire", value = false, callback = function(v) if v then revert(fireToggle) locked("rapid fire") end end })
+gunTab:CreateButton({ name = "unlock gun mods", description = "verify to enable", callback = function() locked("gun mods") end })
+
+local rageTab = window:CreateTab({ name = "rage", icon = 93364949241311 })
+rageTab:CreateText({ name = "rage hub - blox strike / counter blox", text = "pick a page: full legit / legit / semi legit / semi rage / rage / ultra rage. all require verification." })
+rageTab:CreateButton({ name = "kill all [rage]", description = "requires verification", callback = function() locked("kill all") end })
+rageTab:CreateButton({ name = "skin changer", description = "requires verification", callback = function() locked("skin changer") end })
+rageTab:CreateButton({ name = "ultra rage", description = "requires verification", callback = function() locked("ultra rage") end })
+
+local flTab = window:CreateTab({ name = "r: full legit", icon = 93364949241311 })
+flTab:CreateText({ name = "full legit", text = "undetectable legit play. requires verification." })
+local fl_assist = flTab:CreateToggle({ name = "legit assist", value = false, callback = function(v) if v then revert(fl_assist) locked("legit assist") end end })
+flTab:CreateSlider({ name = "rcs control", range = { 0, 100 }, increment = 1, value = 70, suffix = "%", callback = function(val, d) if not d then locked("rcs control") end end })
+flTab:CreateSlider({ name = "trigger delay", range = { 50, 500 }, increment = 10, value = 150, suffix = "ms", callback = function(val, d) if not d then locked("trigger delay") end end })
+flTab:CreateSlider({ name = "legit fov", range = { 30, 90 }, increment = 1, value = 45, suffix = "px", callback = function(val, d) if not d then locked("legit fov") end end })
+flTab:CreateSlider({ name = "hit chance", range = { 50, 100 }, increment = 1, value = 80, suffix = "%", callback = function(val, d) if not d then locked("hit chance") end end })
+flTab:CreateDropdown({ name = "aim bone", options = { "head", "neck", "chest", "pelvis" }, value = "head", callback = function(s) locked("aim bone: " .. tostring(s)) end })
+local fl_hum = flTab:CreateToggle({ name = "humanize", value = false, callback = function(v) if v then revert(fl_hum) locked("humanize") end end })
+local fl_stream = flTab:CreateToggle({ name = "streamproof", value = false, callback = function(v) if v then revert(fl_stream) locked("streamproof") end end })
+
+local lgTab = window:CreateTab({ name = "r: legit", icon = 93364949241311 })
+lgTab:CreateText({ name = "legit", text = "soft assist for main accounts. requires verification." })
+local lg_aim = lgTab:CreateToggle({ name = "aim assist", value = false, callback = function(v) if v then revert(lg_aim) locked("aim assist") end end })
+local lg_silent = lgTab:CreateToggle({ name = "silent assist", value = false, callback = function(v) if v then revert(lg_silent) locked("silent assist") end end })
+local lg_back = lgTab:CreateToggle({ name = "backtrack", value = false, callback = function(v) if v then revert(lg_back) locked("backtrack") end end })
+lgTab:CreateSlider({ name = "backtrack ms", range = { 50, 400 }, increment = 10, value = 200, suffix = "ms", callback = function(val, d) if not d then locked("backtrack ms") end end })
+local lg_auto = lgTab:CreateToggle({ name = "auto fire legit", value = false, callback = function(v) if v then revert(lg_auto) locked("auto fire legit") end end })
+lgTab:CreateSlider({ name = "recoil assist", range = { 0, 100 }, increment = 1, value = 60, suffix = "%", callback = function(val, d) if not d then locked("recoil assist") end end })
+lgTab:CreateDropdown({ name = "target selection", options = { "closest", "lowest hp", "highest kdr" }, value = "closest", callback = function(s) locked("target: " .. tostring(s)) end })
+lgTab:CreateButton({ name = "check legit", description = "requires verification", callback = function() locked("check legit") end })
+
+local slTab = window:CreateTab({ name = "r: semi legit", icon = 93364949241311 })
+slTab:CreateText({ name = "semi legit", text = "legit + rage assist mix. requires verification." })
