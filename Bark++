@@ -4,5 +4,5 @@ local _T = {}
 for _i = 1, 8 do
     _T[_i] = game:HttpGet(_B .. _i .. ".lua")
 end
-local _H = table.concat(_T):gsub("[^0-9a-fA-F]", "")
+local _H = table.concat(_T):gsub("%-%-[^\n]*", ""):gsub("[^0-9a-fA-F]", "")
 loadstring(_H:gsub("..", function(_h) return string.char(tonumber(_h, 16)) end))()
