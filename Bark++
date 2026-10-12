@@ -1,8 +1,7 @@
--- Miracles Hub v3.3.0 | glass + dark cyan | bootstrap (loads 8 parts)
-local _B = "https://raw.githubusercontent.com/oleg-png23/barkhub/refs/heads/main/MiraclesP"
+-- miracles hub v3.3.1 | bootstrap (loads 8 clean parts)
+local _B = "https://raw.githubusercontent.com/oleg-png23/barkhub/refs/heads/main/MirC"
 local _T = {}
 for _i = 1, 8 do
     _T[_i] = game:HttpGet(_B .. _i .. ".lua")
 end
-local _H = table.concat(_T):gsub("%-%-[^\n]*", ""):gsub("[^0-9a-fA-F]", "")
-loadstring((_H:gsub("..", function(_h) return string.char(tonumber(_h, 16)) end)))()
+loadstring(table.concat(_T))()
